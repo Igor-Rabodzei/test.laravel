@@ -14,17 +14,17 @@ class PostsController extends Controller
         return view('index', compact('posts'));
     }
 
-//    public function show($id){
-//        $post = Post::find($id);
-//        return view('posts.show', compact('post'));
-//    }
+    public function show($id){
+        $post = Post::find($id);
+        return view('posts.show', compact('post'));
+    }
 //старая версия по id
 
 
 //новая версия по alias
-    public function show(Post $post){
-        return view('posts.show', compact('post'));
-    }
+//    public function show(Post $post){
+//        return view('posts.show', compact('post'));
+//    }
 
     public function create(){
         return view('posts.create');
@@ -60,11 +60,16 @@ class PostsController extends Controller
         return redirect('/');
     }
 
+    public function getSingle(Post $post){
+        return view('posts.show')->with(compact('post'));
+    }
+
     public function edit(Post $post){
         return view('posts.edit')->with(compact('post'));
     }
 
     public function update(Post $post){
+
         $this->validate(request(),[
             'title' => 'required|min:2',
             'alias' => 'required',
@@ -84,3 +89,5 @@ class PostsController extends Controller
 
 
 }
+
+

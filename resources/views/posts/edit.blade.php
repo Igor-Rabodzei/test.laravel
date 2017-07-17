@@ -3,7 +3,7 @@
 @section('content')
 
 <h2>Edit a post</h2>
-<form action="/posts/{{$post->id}}" method="post">
+<form action="/posts/{{$post->alias}}" method="post">
     {{csrf_field()}}
     {!! method_field('patch') !!}
     <div class="form-group">

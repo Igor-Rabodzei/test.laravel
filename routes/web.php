@@ -11,21 +11,23 @@
 |
 */
 
+
 Route::get('/', "PostsController@index");
-
-//Route::get('/posts/{id}', "PostsController@show")->where("id", "[0-9]+");
-//старая версия роута по id
-
-//новая по alias
-Route::get('/posts/{post}', "PostsController@show");
 
 Route::get('/posts/create', "PostsController@create");
 
+Route::get('/posts/{post}', "PostsController@getSingle");
+
+
+
+Route::get('/posts/{post}/edit', "PostsController@edit");
+//старая версия роута по id
+
+//новая по alias
+//Route::get('/posts/{post}', "PostsController@show")->where("post", "[0-9a-zA-Z]+");
 
 
 Route::post('/post', "PostsController@store");
-
-Route::get('/posts/{post}/edit', "PostsController@edit");
 
 Route::patch('/posts/{post}', "PostsController@update");
 
